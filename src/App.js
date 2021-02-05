@@ -1,24 +1,48 @@
 import logo from './logo.svg';
 import './App.css';
+import Hookscounter from './Hookscounter';
+import Hooksthree from './Hooksthree';
+import Hooksuseeffect from './Hooksuseeffect';
+import MouseWithHooks from './MouseWithHooks';
+import HooksAutoCount from './HooksAutoCount';
+import Datafetch from './Datafetch';
+import Compa from './Contextdemo/Compa'
+import ReduxCounter from './Reduxdemo.js/ReduxCounter';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+
+const initialState = { count: 0 }
+const store = createStore(reducer)
+function reducer(state = initialState, action) {
+  // console.log(action)
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 }
+    case 'DECREMENT':
+      return { count: state.count - 1 }
+    default:
+      return state
+  }
+}
+// store.dispatch({ type: 'INCREMENT', amount: 5 })
+// store.dispatch({ type: 'DECREMENT', amount: 5 })
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <ReduxCounter />
+    </Provider>
+    // <div className="App">
+    //   {/* <Hookscounter/> */}
+    //   {/* <Hooksthree/> */}
+    //   {/* <Hooksuseeffect/> */}
+    //   {/* <MouseWithHooks/> */}
+    //   {/* <HooksAutoCount/> */}
+    //   {/* <Datafetch/> */}
+    //   {/* <Compa/> */}
+    //   <ReduxCounter />
+    // </div>
   );
 }
 
