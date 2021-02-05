@@ -28,3 +28,4 @@ function Reduxindex() {
 }
 
 export default Reduxindex
+//Put all this code in the App.js to make it work
